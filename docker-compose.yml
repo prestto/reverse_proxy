@@ -10,8 +10,7 @@ services:
         volumes:
             - ./proj1:/public
         command: "http-server . -p 8001"
-        depends_on:
-            - container_nginx
+
         networks:
             - app-network
 
@@ -24,7 +23,8 @@ services:
             - 443:443
         networks:
             - app-network
-
+        depends_on:
+            - container1
 networks:
     app-network:
         driver: bridge  
