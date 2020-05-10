@@ -5,8 +5,8 @@ services:
         hostname: container1
         restart: always
         image: danjellz/http-server
-        ports:
-            - "8001:8001"
+        expose:
+            - "8001"
         volumes:
             - ./proj1:/public
         command: "http-server . -p 8001"
@@ -20,7 +20,8 @@ services:
             context: .
             dockerfile: docker/Dockerfile_nginx
         ports:
-            - 8080:8080
+            - 80:80
+            - 443:443
         networks:
             - app-network
 
