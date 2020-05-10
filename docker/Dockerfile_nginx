@@ -1,0 +1,15 @@
+
+FROM nginx:latest
+
+# add nginx config files to sites-available & sites-enabled
+RUN mkdir /etc/nginx/conf.d/sites-available
+RUN mkdir /etc/nginx/conf.d/sites-enabled
+ADD projnginx/conf.d/sites-available/virtual.conf /etc/nginx/conf.d/sites-available/virtual.conf
+RUN cp /etc/nginx/conf.d/sites-available/virtual.conf /etc/nginx/conf.d/sites-enabled/virtual.conf
+
+# Replace the standard nginx conf
+RUN sed -i 's|include /etc/nginx/conf.d/\*.conf;|include /etc/nginx/conf.d/sites-enabled/*.conf;|' /etc/nginx/nginx.conf
+
+WORKDIR /
+
+#RUN nginx -s reload

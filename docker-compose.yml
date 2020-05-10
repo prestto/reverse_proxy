@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+    container1:
+        hostname: container1
+        restart: always
+        image: danjellz/http-server
+        ports:
+            - "8001:8001"
+        volumes:
+            - ./proj1:/public
+        command: "http-server . -p 8001"
+        depends_on:
+            - container_nginx
+        networks:
+            - app-network
+
+    container_nginx:
+        build:
+            context: .
+            dockerfile: docker/Dockerfile_nginx
+        ports:
+            - 8080:8080
+        networks:
+            - app-network
+
+networks:
+    app-network:
+        driver: bridge  

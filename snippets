@@ -1,0 +1,24 @@
+server {
+    listen 80;
+    root /opt/htdocs/usefulread;
+    index index.html index.htm;
+    server_name usefulread.com;
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
+
+include /etc/nginx/conf.d/*.conf;
+include /etc/nginx/conf.d/*.conf;
+
+sed 's|include /etc/nginx/conf.d/\*.conf;|include /etc/nginx/conf.d/virtual.conf;|' /etc/nginx/nginx.conf
+
+# # Docker does not support sym linking outside build context- balls
+# # Change to sites enabled & link sites
+# WORKDIR /etc/nginx/conf.d/sites-enabled
+# RUN ln -s ../sites-available/virtual.conf .
+
+
+apt update
+apt install nano curl
+nano /etc/nginx/conf.d/sites-enabled/virtual.conf 
