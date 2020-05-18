@@ -3,5 +3,6 @@ basicConstraints=CA:FALSE
 keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
 subjectAltName = @alt_names
 
-[alt_names]
-DNS.1 = dali.dev.local
+[ alt_names ]
+DNS.1 =      gitlab.dali.dev
+DNS.2 = openproject.dali.dev
