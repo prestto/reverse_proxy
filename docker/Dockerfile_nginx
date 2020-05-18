@@ -11,5 +11,3 @@ RUN cp /etc/nginx/conf.d/sites-available/virtual.conf /etc/nginx/conf.d/sites-en
 RUN sed -i 's|include /etc/nginx/conf.d/\*.conf;|include /etc/nginx/conf.d/sites-enabled/*.conf;|' /etc/nginx/nginx.conf
 
 WORKDIR /
-
-#RUN nginx -s reload

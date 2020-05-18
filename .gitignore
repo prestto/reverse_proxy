@@ -1,0 +1,5 @@
+projnginx/private/*
+!projnginx/private/.gitkeep
+
+certs/*
+!certs/.gitkeep

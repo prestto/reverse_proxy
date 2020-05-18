@@ -22,3 +22,5 @@ sed 's|include /etc/nginx/conf.d/\*.conf;|include /etc/nginx/conf.d/virtual.conf
 apt update
 apt install nano curl
 nano /etc/nginx/conf.d/sites-enabled/virtual.conf 
+
+sudo lsof -t -i tcp:80 -s tcp:listen | sudo xargs kill
