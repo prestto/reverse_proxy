@@ -4,6 +4,19 @@
 
 A small project to demonstrate running 2 containers with web servers using an nginx container.
 
+## Quick start 
+
+To run the project, simply launch the command:
+
+```bash
+./run.sh dev
+```
+
+The first time, you will need to:
+
+- Setup /etc/hosts on your local machine
+- Add the Certificate Authority to your machine (see section "Setup on the end user machine")
+
 ## Creating a SSL Certificate
 
 To avoid buying an SSL certificate, we create a certificate authority, which must be trusted by the user's browser.
@@ -37,7 +50,7 @@ openssl genrsa -out certs/device.key 2048
 
 # create the certificate signing request
 # Common name = "dali.dev.local"
-openssl req -new -key certs/device.key -out certs/device.csr
+openssl req -new -key certs/device.key -out certs/device.csr -config projnginx/ssl_setup/openssl.cnf
 
 # sign the cert
 # note the importance of -extfile:
